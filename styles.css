@@ -109,6 +109,7 @@ img {
 section {
     position: relative;
     padding: 104px 0;
+    z-index: 1;
 }
 
 .about,
@@ -327,10 +328,12 @@ section {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('contents/img/backgroundberanda.png');
+    background-image: 
+        linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+        url('contents/img/backgroundberanda.png');
     background-size: cover;
     background-position: center;
-    opacity: 0.14;
+    opacity: 1;
     pointer-events: none;
 }
 
@@ -747,6 +750,10 @@ html[data-theme='dark'] .secondary-link:focus-visible {
     color: var(--text);
 }
 
+.units {
+    background: linear-gradient(180deg, var(--section-fade), rgba(255, 255, 255, 0));
+}
+
 .footer {
     padding: 28px 0 42px;
     border-top: 1px solid var(--line);
@@ -802,26 +809,34 @@ html[data-theme='dark'] .secondary-link:focus-visible {
 .unit-download-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
-    min-height: 48px;
-    padding: 0 18px;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    background: var(--panel-bg);
-    color: var(--text);
+    min-height: 52px;
+    padding: 0 26px;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #2db77f, #1a8659);
+    color: #ffffff;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 700;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    box-shadow: 0 8px 24px rgba(45, 183, 127, 0.28);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    cursor: pointer;
 }
 
 .unit-download-btn:hover,
 .unit-download-btn:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(45, 183, 127, 0.36);
+    background: linear-gradient(135deg, #35d699, #2db77f);
+}
+
+.unit-download-btn:active {
     transform: translateY(-1px);
-    border-color: rgba(141, 116, 74, 0.3);
-    color: var(--accent-soft);
+    box-shadow: 0 6px 16px rgba(45, 183, 127, 0.24);
 }
 
 .page-hero {
@@ -874,7 +889,7 @@ html[data-theme='dark'] .secondary-link:focus-visible {
 
 .stok-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1.9fr) minmax(320px, 0.78fr);
+    grid-template-columns: 1fr;
     gap: 32px;
     align-items: start;
 }
@@ -988,44 +1003,9 @@ html[data-theme='dark'] .secondary-link:focus-visible {
     box-shadow: var(--shadow);
 }
 
-.unit-status-legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 22px;
-}
-
-.status-pill {
-    display: inline-flex;
-    align-items: center;
-    min-height: 38px;
-    padding: 0 14px;
-    border-radius: 999px;
-    border: 1px solid var(--line);
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.status-pill-build {
-    background: rgba(209, 158, 51, 0.16);
-    color: #8b6610;
-}
-
-.status-pill-booked {
-    background: rgba(60, 116, 206, 0.14);
-    color: #2f5f9f;
-}
-
-.status-pill-akad {
-    background: rgba(58, 140, 91, 0.14);
-    color: #2d6f47;
-}
-
 .unit-status-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 14px;
 }
 
@@ -1072,6 +1052,11 @@ html[data-theme='dark'] .secondary-link:focus-visible {
     box-shadow: 0 0 0 6px rgba(58, 140, 91, 0.12);
 }
 
+.status-dot-tersedia {
+    background: #2db77f;
+    box-shadow: 0 0 0 6px rgba(45, 183, 127, 0.12);
+}
+
 .unit-chip-list {
     display: flex;
     flex-wrap: wrap;
@@ -1097,18 +1082,6 @@ html[data-theme='dark'] .unit-status-card {
 
 html[data-theme='dark'] .unit-chip {
     background: rgba(255, 255, 255, 0.06);
-}
-
-html[data-theme='dark'] .status-pill-build {
-    color: #e7c46d;
-}
-
-html[data-theme='dark'] .status-pill-booked {
-    color: #8eb6f3;
-}
-
-html[data-theme='dark'] .status-pill-akad {
-    color: #8fd1aa;
 }
 
 .unit-card {
