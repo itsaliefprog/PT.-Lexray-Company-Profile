@@ -333,8 +333,33 @@ section {
         url('contents/img/backgroundberanda.png');
     background-size: cover;
     background-position: center;
-    opacity: 1;
+    opacity: 0.34;
     pointer-events: none;
+}
+
+.content-background-shell {
+    position: relative;
+    isolation: isolate;
+}
+
+.content-background-shell::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(180deg, rgba(245, 241, 232, 0.76), rgba(245, 241, 232, 0.7)),
+        url('contents/img/backgroundindexwindows.png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    opacity: 0.22;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.content-background-shell > section {
+    position: relative;
+    z-index: 1;
 }
 
 .hero-overlay {
@@ -419,6 +444,11 @@ html[data-theme='dark'] .theme-toggle:focus-visible,
 html[data-theme='dark'] .secondary-link:hover,
 html[data-theme='dark'] .secondary-link:focus-visible {
     color: var(--accent-soft);
+}
+
+html[data-theme='dark'] .info-item-clickable:hover {
+    background: var(--soft-bg-3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 .hero-actions {
@@ -736,6 +766,32 @@ html[data-theme='dark'] .secondary-link:focus-visible {
 .info-item p a:hover,
 .info-item p a:focus-visible {
     color: var(--accent-soft);
+}
+
+.info-item-clickable {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.info-item-clickable:hover {
+    background: var(--soft-bg-2);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.info-item-clickable:hover i {
+    background: var(--accent);
+    color: var(--white);
+}
+
+.info-item-clickable p {
+    color: var(--text-muted);
 }
 
 .social-section {
@@ -1504,6 +1560,15 @@ html[data-theme='dark'] .carousel-dot.active span {
 }
 
 @media (max-width: 640px) {
+    .content-background-shell::before {
+        background-image:
+            linear-gradient(180deg, rgba(245, 241, 232, 0.82), rgba(245, 241, 232, 0.74)),
+            url('contents/img/backgroundindexmobile.png');
+        background-position: center top;
+        background-size: cover;
+        opacity: 0.18;
+    }
+
     section {
         padding: 84px 0;
     }
